@@ -1,0 +1,272 @@
+1) Costo de envio de carta 
+#include <iostream>
+using namespace std;
+
+int main() {
+    float P, costo;
+
+    cout << "Ingrese el peso de la carta en gramos: ";
+    cin >> P;
+
+    if (P > 0 && P < 50)
+        costo = 1.50;
+    else if (P > 50 && P <= 100)
+        costo = 4.00;
+    else if (P > 100 && P <= 200)
+        costo = 6.00;
+    else if (P > 200 && P <= 350)
+        costo = 10.50;
+    else if (P > 350 && P <= 500)
+        costo = 15.00;
+    else {
+        cout << "NO PUEDE ENVIAR COMO CARTA" << endl;
+        return 0;
+    }
+
+    cout << "Costo de envio: Bs. " << costo << endl;
+
+    return 0;
+}
+
+
+2) Ecuación cuadrática (básico)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    float a, b, c, x1, x2, D;
+
+    cout << "Ingrese a, b, c: ";
+    cin >> a >> b >> c;
+
+    D = pow(b, 2) - 4 * a * c;
+
+    x1 = (-b + sqrt(D)) / (2 * a);
+    x2 = (-b - sqrt(D)) / (2 * a);
+
+    cout << "x1 = " << x1 << endl;
+    cout << "x2 = " << x2 << endl;
+
+    return 0;
+}
+
+
+3) Descomponer número
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N, u, d, c, m;
+
+    cout << "Ingrese un numero (<10000): ";
+    cin >> N;
+
+    u = N % 10;
+    d = (N / 10) % 10;
+    c = (N / 100) % 10;
+    m = (N / 1000) % 10;
+
+    cout << "Unidades: " << u << endl;
+    cout << "Decenas: " << d << endl;
+    cout << "Centenas: " << c << endl;
+    cout << "Miles: " << m << endl;
+
+    return 0;
+}
+
+
+4) Tiempo transcurrido
+#include <iostream>
+using namespace std;
+
+int main() {
+    int h1, m1, s1, h2, m2, s2;
+    int t1, t2, diff;
+
+    cout << "Hora 1 (h m s): ";
+    cin >> h1 >> m1 >> s1;
+
+    cout << "Hora 2 (h m s): ";
+    cin >> h2 >> m2 >> s2;
+
+    t1 = h1 * 3600 + m1 * 60 + s1;
+    t2 = h2 * 3600 + m2 * 60 + s2;
+
+    diff = t2 - t1;
+
+    int h = diff / 3600;
+    int m = (diff % 3600) / 60;
+    int s = diff % 60;
+
+    cout << "Tiempo transcurrido: "
+         << h << ":" << m << ":" << s << endl;
+
+    return 0;
+}
+
+
+5) Estación del año
+#include <iostream>
+using namespace std;
+
+int main() {
+    int d, m;
+
+    cout << "Ingrese dia y mes: ";
+    cin >> d >> m;
+
+    if ((m == 9 && d >= 21) || (m > 9 && m < 12) || (m == 12 && d < 21))
+        cout << "Primavera";
+    else if ((m == 12 && d >= 21) || (m < 3) || (m == 3 && d < 21))
+        cout << "Verano";
+    else if ((m == 3 && d >= 21) || (m > 3 && m < 6) || (m == 6 && d < 21))
+        cout << "Otoño";
+    else
+        cout << "Invierno";
+
+    return 0;
+}
+
+6) Ecuación cuadrática (todos los casos)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    float a, b, c, D;
+
+    cout << "Ingrese a, b, c: ";
+    cin >> a >> b >> c;
+
+    D = b*b - 4*a*c;
+
+    if (D > 0) {
+        cout << "Dos soluciones reales\n";
+        cout << (-b + sqrt(D))/(2*a) << endl;
+        cout << (-b - sqrt(D))/(2*a) << endl;
+    } else if (D == 0) {
+        cout << "Una solucion real\n";
+        cout << -b/(2*a);
+    } else {
+        cout << "No hay soluciones reales";
+    }
+
+    return 0;
+}
+
+
+7) Sistema de ecuaciones
+#include <iostream>
+using namespace std;
+
+int main() {
+    float a,b,c,d,e,f,det,x,y;
+
+    cout << "Ingrese a,b,c,d,e,f: ";
+    cin >> a >> b >> c >> d >> e >> f;
+
+    det = a*e - b*d;
+
+    if (det != 0) {
+        x = (c*e - b*f) / det;
+        y = (a*f - c*d) / det;
+
+        cout << "Solucion unica:\n";
+        cout << "X=" << x << " Y=" << y;
+    } else {
+        cout << "No hay solucion unica";
+    }
+
+    return 0;
+}
+
+
+
+8) Restaurante
+#include <iostream>
+using namespace std;
+
+int main() {
+    int h, q, p;
+    float s, total;
+
+    cout << "Hamburguesas: "; cin >> h;
+    cout << "Con queso: "; cin >> q;
+    cout << "Papas: "; cin >> p;
+    cout << "Soda: "; cin >> s;
+
+    total = h*3 + q*5 + p*2 + s*2.5;
+
+    cout << "Total a pagar: Bs. " << total;
+
+    return 0;
+}
+
+
+
+9) Áreas con menú
+#include <iostream>
+using namespace std;
+
+int main() {
+    int op;
+    float L, R, B, H;
+
+    cout << "1. Cuadrado\n2. Circulo\n3. Triangulo\n";
+    cin >> op;
+
+    switch(op) {
+        case 1:
+            cin >> L;
+            cout << "Area = " << L*L;
+            break;
+        case 2:
+            cin >> R;
+            cout << "Area = " << 3.1416*R*R;
+            break;
+        case 3:
+            cin >> B >> H;
+            cout << "Area = " << (B*H)/2;
+            break;
+    }
+
+    return 0;
+}
+
+
+10) Nota final (con repetición)
+#include <iostream>
+using namespace std;
+
+int main() {
+    float p1, p2, practico, final, nf;
+    int faltas;
+    char op;
+
+    do {
+        cout << "Parcial 1: "; cin >> p1;
+        cout << "Parcial 2: "; cin >> p2;
+        cout << "Practico: "; cin >> practico;
+        cout << "Final: "; cin >> final;
+        cout << "Faltas: "; cin >> faltas;
+
+        if (faltas > 9)
+            final = 0;
+
+        nf = (p1+p2)/2 * 0.4 + practico*0.2 + final*0.4;
+
+        cout << "Nota final: " << nf << endl;
+
+        if (nf >= 51)
+            cout << "APROBADO\n";
+        else
+            cout << "REPROBADO\n";
+
+        cout << "Otro alumno? (s/n): ";
+        cin >> op;
+
+    } while(op == 's');
+
+    return 0;
+}
