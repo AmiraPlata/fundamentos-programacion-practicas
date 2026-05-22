@@ -1,0 +1,596 @@
+Ejercicio 1) 
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double POTEN(double x, double y)
+{
+    return pow(x, y);
+}
+
+int main()
+{
+    double x, y;
+
+    cout << "Ingrese x: ";
+    cin >> x;
+
+    cout << "Ingrese y: ";
+    cin >> y;
+
+    cout << "Resultado: " << POTEN(x, y);
+
+    return 0;
+}
+
+
+
+
+Ejercicio 2)
+#include <iostream>
+using namespace std;
+
+long long FAC(int n)
+{
+    long long f = 1;
+
+    for(int i = 1; i <= n; i++)
+    {
+        f *= i;
+    }
+
+    return f;
+}
+
+int main()
+{
+    int n;
+
+    cout << "Ingrese n: ";
+    cin >> n;
+
+    cout << "Factorial: " << FAC(n);
+
+    return 0;
+}
+
+
+
+
+
+Ejercicio 3)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+long long FAC(int n)
+{
+    long long f = 1;
+
+    for(int i = 1; i <= n; i++)
+    {
+        f *= i;
+    }
+
+    return f;
+}
+
+double SERIE(int x, int N)
+{
+    double S = 0;
+
+    for(int i = 1; i <= N; i++)
+    {
+        S += pow(x, i) / FAC(i);
+    }
+
+    return S;
+}
+
+int main()
+{
+    int x, N;
+
+    cin >> x >> N;
+
+    cout << "Resultado: " << SERIE(x, N);
+
+    return 0;
+}
+
+
+
+
+
+
+
+Ejercicio 4)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+long long FAC(int n)
+{
+    long long f = 1;
+
+    for(int i = 1; i <= n; i++)
+    {
+        f *= i;
+    }
+
+    return f;
+}
+
+double SERIE(int x, int N)
+{
+    double S = 0;
+    int signo = 1;
+
+    for(int i = 1; i <= N; i += 2)
+    {
+        S += signo * (pow(x, i) / FAC(i));
+        signo *= -1;
+    }
+
+    return S;
+}
+
+int main()
+{
+    int x, N;
+
+    cin >> x >> N;
+
+    cout << "Resultado: " << SERIE(x, N);
+
+    return 0;
+}
+
+
+
+
+Ejercicio 5)
+#include <iostream>
+using namespace std;
+
+void SISTEMA(double A, double B, double C,
+             double D, double E, double F,
+             double &X, double &Y)
+{
+    double det;
+
+    det = A * E - B * D;
+
+    X = (B * F - C * E) / det;
+    Y = (C * D - A * F) / det;
+}
+
+int main()
+{
+    double A, B, C, D, E, F;
+    double X, Y;
+
+    cin >> A >> B >> C;
+    cin >> D >> E >> F;
+
+    SISTEMA(A, B, C, D, E, F, X, Y);
+
+    cout << "X = " << X << endl;
+    cout << "Y = " << Y;
+
+    return 0;
+}
+
+
+
+
+Ejercicio 6)
+#include <iostream>
+using namespace std;
+
+void LITERAL(int d, int m, int a)
+{
+    string meses[] =
+    {
+        "", "Enero", "Febrero", "Marzo",
+        "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre",
+        "Octubre", "Noviembre", "Diciembre"
+    };
+
+    if(a < 100)
+    {
+        a += 1900;
+    }
+
+    cout << d << " de " << meses[m]
+         << " de " << a;
+}
+
+int main()
+{
+    int d, m, a;
+
+    cin >> d >> m >> a;
+
+    LITERAL(d, m, a);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+Ejercicio 7)
+#include <iostream>
+using namespace std;
+
+long long FAC(int n)
+{
+    long long f = 1;
+
+    for(int i = 1; i <= n; i++)
+    {
+        f *= i;
+    }
+
+    return f;
+}
+
+long long COMBI(int n, int r)
+{
+    return FAC(n) / (FAC(r) * FAC(n-r));
+}
+
+int main()
+{
+    int n, r;
+
+    cin >> n >> r;
+
+    cout << "Resultado: "
+         << COMBI(n, r);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+Ejercicio 8)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void ECUACION(double a, double b, double c)
+{
+    double d, x1, x2;
+
+    d = b*b - 4*a*c;
+
+    if(d > 0)
+    {
+        x1 = (-b + sqrt(d)) / (2*a);
+        x2 = (-b - sqrt(d)) / (2*a);
+
+        cout << "Raices reales:" << endl;
+        cout << x1 << endl;
+        cout << x2;
+    }
+    else if(d == 0)
+    {
+        x1 = -b / (2*a);
+
+        cout << "Raiz doble: "
+             << x1;
+    }
+    else
+    {
+        cout << "Raices complejas";
+    }
+}
+
+int main()
+{
+    double a, b, c;
+
+    cin >> a >> b >> c;
+
+    ECUACION(a, b, c);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+Ejercicio 9)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int BINARIO(int bin)
+{
+    int dec = 0;
+    int i = 0;
+    int r;
+
+    while(bin > 0)
+    {
+        r = bin % 10;
+
+        dec += r * pow(2, i);
+
+        bin /= 10;
+        i++;
+    }
+
+    return dec;
+}
+
+int main()
+{
+    int bin;
+
+    cin >> bin;
+
+    cout << "Decimal: "
+         << BINARIO(bin);
+
+    return 0;
+}
+
+
+
+
+
+Ejercicio 10)
+#include <iostream>
+using namespace std;
+
+void ROMANO(int n)
+{
+    while(n >= 1000)
+    {
+        cout << "M";
+        n -= 1000;
+    }
+
+    while(n >= 900)
+    {
+        cout << "CM";
+        n -= 900;
+    }
+
+    while(n >= 500)
+    {
+        cout << "D";
+        n -= 500;
+    }
+
+    while(n >= 400)
+    {
+        cout << "CD";
+        n -= 400;
+    }
+
+    while(n >= 100)
+    {
+        cout << "C";
+        n -= 100;
+    }
+
+    while(n >= 90)
+    {
+        cout << "XC";
+        n -= 90;
+    }
+
+    while(n >= 50)
+    {
+        cout << "L";
+        n -= 50;
+    }
+
+    while(n >= 40)
+    {
+        cout << "XL";
+        n -= 40;
+    }
+
+    while(n >= 10)
+    {
+        cout << "X";
+        n -= 10;
+    }
+
+    while(n >= 9)
+    {
+        cout << "IX";
+        n -= 9;
+    }
+
+    while(n >= 5)
+    {
+        cout << "V";
+        n -= 5;
+    }
+
+    while(n >= 4)
+    {
+        cout << "IV";
+        n -= 4;
+    }
+
+    while(n >= 1)
+    {
+        cout << "I";
+        n -= 1;
+    }
+}
+
+int main()
+{
+    int n;
+
+    cin >> n;
+
+    ROMANO(n);
+
+    return 0;
+}
+
+
+
+
+
+
+Ejercicio 11) 
+#include <iostream>
+using namespace std;
+
+void LITERAL(int n)
+{
+    if(n == 1000)
+    {
+        cout << "Mil";
+    }
+    else
+    {
+        cout << "Numero no implementado completamente";
+    }
+}
+
+int main()
+{
+    int n;
+
+    cin >> n;
+
+    LITERAL(n);
+
+    return 0;
+}
+
+
+
+
+
+Ejercicio 12)
+#include <iostream>
+using namespace std;
+
+bool VALIDAR(int d, int m, int a)
+{
+    if(m < 1 || m > 12)
+    {
+        return false;
+    }
+
+    if(d < 1 || d > 31)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+int main()
+{
+    int d, m, a;
+
+    cin >> d >> m >> a;
+
+    if(VALIDAR(d, m, a))
+    {
+        cout << "Fecha valida";
+    }
+    else
+    {
+        cout << "Fecha invalida";
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+Ejercicio 13) 
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double REDONDEAR(double x, int n)
+{
+    double p;
+
+    p = pow(10, n);
+
+    return round(x * p) / p;
+}
+
+int main()
+{
+    double x;
+    int n;
+
+    cin >> x >> n;
+
+    cout << REDONDEAR(x, n);
+
+    return 0;
+}
+
+
+
+
+
+
+
+Ejercicio 14)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int DIAS(int d, int m, int a)
+{
+    return d + (m * 30) + (a * 365);
+}
+
+int DIFERENCIA(int d1, int m1, int a1,
+               int d2, int m2, int a2)
+{
+    return abs(DIAS(d2,m2,a2)
+         - DIAS(d1,m1,a1));
+}
+
+int main()
+{
+    int d1, m1, a1;
+    int d2, m2, a2;
+
+    cin >> d1 >> m1 >> a1;
+    cin >> d2 >> m2 >> a2;
+
+    cout << "Dias: "
+         << DIFERENCIA(d1,m1,a1,
+                       d2,m2,a2);
+
+    return 0;
+}
